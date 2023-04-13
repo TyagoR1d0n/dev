@@ -1,4 +1,4 @@
 package devandroid.tyago.applistacurso.controller;
 
-public class CursoController {
+public class PessoaController {
 }
