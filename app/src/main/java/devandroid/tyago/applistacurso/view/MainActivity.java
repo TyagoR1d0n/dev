@@ -10,11 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import devandroid.tyago.applistacurso.R;
+import devandroid.tyago.applistacurso.controller.PessoaController;
 import devandroid.tyago.applistacurso.model.Pessoa;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        controller = new PessoaController();
         pessoa = new Pessoa();
         outraPessoa = new Pessoa();
 
