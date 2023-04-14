@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         controller = new PessoaController();
+        controller.toString();
         pessoa = new Pessoa();
         outraPessoa = new Pessoa();
 
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
-
+                controller.salvar(pessoa);
 
             }
         });
