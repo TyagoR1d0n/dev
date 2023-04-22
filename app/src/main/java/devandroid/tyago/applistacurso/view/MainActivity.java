@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
-
+    SharedPreferences.Editor listaVip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
-             controller.limpar();
 
             }
         });
