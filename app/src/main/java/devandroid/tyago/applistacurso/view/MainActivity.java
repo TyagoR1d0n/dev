@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
-
+    SharedPreferences.Editor listaVip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = preferences.edit();
+         listaVip = preferences.edit();
 
         controller = new PessoaController();
         controller.toString();
@@ -80,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
+                listaVip.clear();
+                listaVip.apply();
             }
         });
 
