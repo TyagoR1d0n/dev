@@ -20,8 +20,6 @@ import devandroid.tyago.applistacurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
 
-    SharedPreferences preferences;
-    public static final String NOME_PREFERENCES = "pref_ListaVip";
     PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
@@ -32,18 +30,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-         listaVip = preferences.edit();
 
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
         pessoa = new Pessoa();
+        controller.buscar(pessoa);
         outraPessoa = new Pessoa();
 
-        pessoa.setPrimeiroNome(preferences.getString("Primeiro Nome","NA"));
-        pessoa.setSobreNome(preferences.getString("Sobrenome","Na"));
-        pessoa.setCursoDesejado(preferences.getString("Curso Desejado","Na"));
-        pessoa.setTelefoneContato(preferences.getString("Telefone Contato","Na"));
+
 
 
 
@@ -80,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
-                listaVip.clear();
-                listaVip.apply();
+
             }
         });
 
@@ -103,11 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                listaVip.putString("Primeiro Nome", pessoa.getPrimeiroNome());
-                listaVip.putString("Sobrenome", pessoa.getSobreNome());
-                listaVip.putString("Curso Desejado", pessoa.getCursoDesejado());
-                listaVip.putString("Telefone Contato", pessoa.getTelefoneContato());
-                listaVip.apply();
 
 
                 controller.salvar(pessoa);
