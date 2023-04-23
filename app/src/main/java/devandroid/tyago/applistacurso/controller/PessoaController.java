@@ -45,10 +45,10 @@ public class PessoaController {
     }
 
     public Pessoa buscar(Pessoa pessoa) {
-        pessoa.setPrimeiroNome(preferences.getString("Primeiro Nome", "NA"));
-        pessoa.setSobreNome(preferences.getString("Sobrenome", "NA"));
-        pessoa.setCursoDesejado(preferences.getString("Curso Desejado", "NA"));
-        pessoa.setTelefoneContato(preferences.getString("Telefone Contato", "NA"));
+        pessoa.setPrimeiroNome(preferences.getString("Primeiro Nome", ""));
+        pessoa.setSobreNome(preferences.getString("Sobrenome", ""));
+        pessoa.setCursoDesejado(preferences.getString("Curso Desejado", ""));
+        pessoa.setTelefoneContato(preferences.getString("Telefone Contato", ""));
         return pessoa;
     }
 

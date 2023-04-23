@@ -74,8 +74,7 @@ public class Pessoa {
                 ", sobreNome='" + sobreNome + '\'' +
                 ", cursoDesejado='" + cursoDesejado + '\'' +
                 ", telefoneContato='" + telefoneContato + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
+
                 '}';
     }
 }

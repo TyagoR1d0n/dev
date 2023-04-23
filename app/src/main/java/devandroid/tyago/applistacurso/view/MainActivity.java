@@ -35,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
         controller.toString();
         pessoa = new Pessoa();
         controller.buscar(pessoa);
+        controller.limpar();
         outraPessoa = new Pessoa();
-
-
-
 
 
         EditText editPrimeiroNome;
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
 
-
+                
             }
         });
 
@@ -95,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
-
 
 
                 controller.salvar(pessoa);
