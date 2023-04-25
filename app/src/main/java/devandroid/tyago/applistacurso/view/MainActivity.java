@@ -6,17 +6,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.prefs.Preferences;
 
 import devandroid.tyago.applistacurso.R;
 import devandroid.tyago.applistacurso.controller.CursoController;
 import devandroid.tyago.applistacurso.controller.PessoaController;
-import devandroid.tyago.applistacurso.model.Curso;
 import devandroid.tyago.applistacurso.model.Pessoa;
 
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     PessoaController controller;
     CursoController cursoController;
     Pessoa pessoa;
-    List<Curso> listaDeCursos;
+    List<String> nomesDosCursos;
     Pessoa outraPessoa;
     SharedPreferences.Editor listaVip;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new PessoaController(MainActivity.this);
         cursoController = new CursoController();
-        listaDeCursos = cursoController.getListaDeCursos();
+        nomesDosCursos = cursoController.dadosParaSpinner();
         controller.toString();
         pessoa = new Pessoa();
         controller.buscar(pessoa);
@@ -54,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
         Button btnLimpar;
         Button btnSalvar;
         Button btnFinalizar;
+        Spinner spinner;
 
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobreNomeAluno = findViewById(R.id.editSobreNomeAluno);
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
+        spinner = findViewById(R.id.spinner);
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobreNomeAluno.setText(pessoa.getSobreNome());
@@ -69,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
         btnFinalizar = findViewById(R.id.btnFinalizar);
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
+
+        //Adapter
+        //Layout
+        //Injetar o Spinner
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                cursoController.dadosParaSpinner());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
 
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
