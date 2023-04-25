@@ -7,16 +7,29 @@ import devandroid.tyago.applistacurso.model.Curso;
 
 public class CursoController {
 
-    public List listCursos;
+    private List listCursos;
 
-    public List getNomeDeCursos(){
+    public List getListaDeCursos(){
     listCursos = new ArrayList<Curso>();
-    listCursos.add(new Curso());
-    listCursos.add(new Curso());
-    listCursos.add(new Curso());
-    listCursos.add(new Curso());
-    listCursos.add(new Curso());
+    listCursos.add(new Curso("Java"));
+    listCursos.add(new Curso("HTML"));
+    listCursos.add(new Curso("Css"));
+    listCursos.add(new Curso("PHP"));
+    listCursos.add(new Curso("PYTON"));
 
     return listCursos;
+    }
+
+    // maneira mais simples de criar um spinner rapidamente
+    public ArrayList<String> dadosParaSpinner(){
+
+        ArrayList<String> dados = new ArrayList<>();
+
+        for (int i = 0; i < getListaDeCursos().size() ; i++) {
+            Curso objeto = (Curso) getListaDeCursos().get(i);
+            dados.add(objeto.getNomeDoCursoDesejado());
+        }
+        return dados;
+        //fim spinner
     }
 }
